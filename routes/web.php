@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\TravelPackageController;
+use App\Http\Controllers\CekOutController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -22,23 +23,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
-Route::post('/checkout/{id}', 'CheckoutController@process')
+Route::post('/checkout/{id}', [CekOutController::class , 'prosess'])
     ->name('checkout_process')
     ->middleware(['auth', 'verified']);
 
-Route::get('/checkout/{id}', 'CheckoutController@index')
+Route::get('/checkout/{id}', [CekOutController::class , 'index'])
     ->name('checkout')
     ->middleware(['auth', 'verified']);
 
-Route::post('/checkout/create/{detail_id}', 'CheckoutController@create')
+Route::post('/checkout/create/{detail_id}', [CekOutController::class , 'create'])
     ->name('checkout-create')
     ->middleware(['auth', 'verified']);
 
-Route::get('/checkout/remove/{detail_id}', 'CheckoutController@remove')
+Route::get('/checkout/remove/{detail_id}', [CekOutController::class , 'remove'])
     ->name('checkout-remove')
     ->middleware(['auth', 'verified']);
 
-Route::get('/checkout/confirm/{id}', 'CheckoutController@success')
+Route::get('/checkout/confirm/{id}', [CekOutController::class , 'sukses'])
     ->name('checkout-success')
     ->middleware(['auth', 'verified']);
 

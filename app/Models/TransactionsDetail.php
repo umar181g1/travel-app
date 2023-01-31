@@ -10,7 +10,7 @@ class TransactionsDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'transactions_id', 'username', 'nationality', 'is_visa', 'doe_passport'
+        'transactions_id', 'username', 'nationality', 'is_visa', 'doe_pasport'
     ];
 
     protected $hidden = [];
